@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zf.mapper.MyUserMapper">
+    <resultMap id="myUser" type="com.zf.entity.MyUser">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <select id="findById" resultMap="myUser">
+        SELECT * FROM my_user WHERE id=#{id}
+    </select>
+
+    <!--mysql id自动生成策略, 数据库主键需设为自增属性-->
+    <insert id="insert" parameterType="com.zf.entity.MyUser">
+        INSERT INTO my_user (username, age) VALUES (#{username}, #{age})
+    </insert>
+</mapper>
