@@ -1,0 +1,36 @@
+dataSource:
+  ds_jdbc_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ds_jdbc_0?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+  ds_jdbc_1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ds_jdbc_1?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+
+defaultDataSourceName: ds_jdbc_0
+
+tables:
+  t_order:
+    actualTables: t_order_${0..1}
+    tableStrategy:
+      shardingColumns: order_id
+      algorithmClassName: com.zf.config.TableShardingAlgorithm
+
+  #绑定表中其余的表的策略与t_order的策略相同
+#  t_order_item:
+#    actualTables: t_order_item_${0..1}
+#    tableStrategy: *table001
+#
+#bindingTables:
+#  - tableNames: t_order,t_order_item
+#  - tableNames: ...
+#
+#defaultDatabaseStrategy:
+#  shardingColumns: none
+#  algorithmClassName: com.dangdang.ddframe.rdb.sharding.api.strategy.database.NoneDatabaseShardingAlgorithm
+
+props:
+  metrics.enable: false

@@ -11,7 +11,6 @@
         SELECT * FROM my_user WHERE id=#{id}
     </select>
 
-    <!--mysql id自动生成策略, 数据库主键需设为自增属性-->
     <insert id="insert" parameterType="com.zf.entity.MyUser">
         INSERT INTO my_user (username, age) VALUES (#{username}, #{age})
     </insert>

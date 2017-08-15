@@ -17,16 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController
 {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
     @Autowired
     private MyUserService myUserService;
 
-    @GetMapping("/getUsername")
-    public String getUsername(Long id)
-    {
-        return getUsernameById(id);
-    }
+//    @GetMapping("/getUsername")
+//    public String getUsername(Long id)
+//    {
+//        return getUsernameById(id);
+//    }
 
     @PostMapping("/getUser")
     public MyUser getUserById(Long id)
@@ -40,11 +40,11 @@ public class UserController
         return myUserService.insert(myUser);
     }
 
-    private String getUsernameById(Long id)
-    {
-        String sql = "select username from my_user where id = ?";
-        String username = jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
-        return username;
-    }
+//    private String getUsernameById(Long id)
+//    {
+//        String sql = "select username from my_user where id = ?";
+//        String username = jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
+//        return username;
+//    }
 
 }
